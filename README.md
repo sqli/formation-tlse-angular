@@ -5,4 +5,5 @@
 Angular Course
 --------
 All the necessary knowledge needed to build real-world apps
+
 To keep track of your progress, each training has its own branch.
