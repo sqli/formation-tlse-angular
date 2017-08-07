@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {MdListModule} from '@angular/material';
 import {MdToolbarModule} from '@angular/material';
@@ -15,6 +16,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    FlexLayoutModule,
     MdListModule,
     MdToolbarModule,
     MdCardModule, 
