@@ -2,50 +2,34 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
 
-# Practice 05 Component
-- create book directory 
-- create a class in book.ts
-  ```typescript
-  export class Book {
-    id: number;
-    title: string;
-    author: string;
-  }
+# Practice 06 Service
+- create book service
   ```
-
-- create book component
+  ng g s book/book --flat
   ```
-  ng g c book/book --flat
-  ```
-- In book-component   
-Add a book property   
+- In book-service   
+Add a get method
    ```typescript
-    book: Book = {
+  get(): Book {
+    return {
       id: 1,
       title: 'Quatrevingt-treize',
       author: 'Hugo',
+    }
   }
   ```
-- In book.html  
-   Display a card with book's properties
-    ```html
-   <md-card>
-     <md-card-header>
-        {{book.title}}
-     </md-card-header>
-     <md-card-content>
-        {{book.author}}
-     </md-card-content>
-   </md-card>
+- In book-component  
+   Add the service to the provider
+   ```typescript
+    providers: [BookService]
    ```
-- In book.css  
-   Add card style
-   ```css
-    md-card {
-      margin-top:10px;
-      width: 200px;
+   Inject the service in the constructor
+   ```typescript
+    constructor(private bookService: BookService) { }
+   ```
+   Call the service on component initialization
+   ```typescript
+    ngOnInit() {
+      this.book = this.bookService.get();
     }
-    ```
-
-
-
+   ```
