@@ -11,7 +11,7 @@ export class BookService {
       id: 1,
       title: 'Quatrevingt-treize',
       author: 'Hugo',
-    }
+    };
   }
 
 }
