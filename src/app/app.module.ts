@@ -19,7 +19,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FlexLayoutModule,
     MdListModule,
     MdToolbarModule,
-    MdCardModule, 
+    MdCardModule,
     BrowserAnimationsModule
   ],
   providers: [],

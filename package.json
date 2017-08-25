@@ -8,7 +8,7 @@
     "start-fr" : "ng serve --aot --locale fr --i18n-format xlf --i18n-file src/locale/messages.fr.xlf",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint --type-check",
     "e2e": "ng e2e",
     "i18n": "ng-xi18n --i18nFormat=xlf"
   },
