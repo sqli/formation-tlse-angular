@@ -17,7 +17,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserModule,
     MdListModule,
     MdToolbarModule,
-    MdCardModule, 
+    MdCardModule,
     BrowserAnimationsModule
   ],
   providers: [],
