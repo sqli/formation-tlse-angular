@@ -10,8 +10,8 @@ export class BookComponent implements OnInit {
   book: Book = {
     id: 1,
     title: 'Quatrevingt-treize',
-    author: 'Hugo',
-  }
+    author: 'Hugo'
+  };
 
   constructor() { }
 
