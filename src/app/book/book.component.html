@@ -1,8 +1,10 @@
-<md-card>
-  <md-card-header>
-    <p appUppercase>{{book.title}}</p>
-  </md-card-header>
-  <md-card-content>
-    {{book.author}}
-  </md-card-content>
-</md-card>
+<div *ngFor="let book of books">
+  <md-card>
+    <md-card-header>
+      <p appUppercase>{{book.title}}</p>
+    </md-card-header>
+    <md-card-content>
+      {{book.author}}
+    </md-card-content>
+  </md-card>
+</div>

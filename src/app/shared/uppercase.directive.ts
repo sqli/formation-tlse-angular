@@ -6,7 +6,7 @@ import { Directive, ElementRef } from '@angular/core';
 export class UppercaseDirective {
 
   constructor(el: ElementRef) {
-    el.nativeElement.style["text-transform"] = 'uppercase';
+    el.nativeElement.style['text-transform'] = 'uppercase';
    }
 
 }
