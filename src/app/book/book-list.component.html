@@ -1,1 +1,2 @@
-<app-book [book]=book *ngFor="let book of books"></app-book>
+{{message}}
+<app-book [book]=book *ngFor="let book of books" (click)="onClick(book)"></app-book>

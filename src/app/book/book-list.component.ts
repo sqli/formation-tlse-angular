@@ -10,10 +10,15 @@ import { BookService } from './book.service';
 })
 export class BookListComponent implements OnInit {
   books: Book[];
+  message: String;
 
   constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
     this.books = this.bookService.getAll();
+  }
+
+  onClick(book: Book): void {
+    this.message = `You click on ${book.title} !`
   }
 }

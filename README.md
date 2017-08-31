@@ -49,21 +49,23 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     }
     ```
  - In app-component  
- 
-## Structural directive
 
- - In book-service  
-   Add a method returning a array of books
+## Event binding 
+
+ - In book-list-component  
+   Add a method to fill a message in response to the an user click
    ```typescript
-   getAll(): Book[] 
+    message: String;
+    [...]
+    onClick(book: Book): void {
+      this.message = `You click on ${book.title} !`
+    }
    ```
-- In book-component  
-  Call the new method to gets books
-  ```typescript
-  this.books = this.bookService.getAll();
-  ```
-- In book-template  
-  Add a div around the card with a *ngFor to loop through books
-  ```html
-  <div *ngFor="let book of books">
-  ```
+ - In book-list-template  
+    - Display the message
+    - Bind the click event to the onClick method
+    ```html
+    {{message}}
+    <app-book [book]=book *ngFor="let book of books" (click)="onClick(book)"></app-book>
+    ```
+
