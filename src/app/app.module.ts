@@ -11,12 +11,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookComponent } from './book/book.component';
 import { UppercaseDirective } from './shared/uppercase.directive';
+import { BookListComponent } from './book/book-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
-    UppercaseDirective
+    UppercaseDirective,
+    BookListComponent
   ],
   imports: [
     BrowserModule,
