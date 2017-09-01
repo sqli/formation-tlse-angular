@@ -2,29 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
 
-# Practice 08 Data-Binding
+# Practice 09 HTTP
 
 ## Property binding
-- Create a book's list component
-  ```
-  ng generate c book/bookList --flat
-  ```
-- In book-component  
-  Mark book as a target of data-binding as input properties using decorators
+- In app-module 
+  You need to install the HttpClientModule
    ```typescript
-  import { Component, Input } from '@angular/core';
-  import { Book } from './book';
-
-  @Component({
-    selector: 'app-book',
-    templateUrl: './book.component.html',
-    styleUrls: ['./book.component.css']
-  })
-  export class BookComponent {
-    @Input() book: Book;
-
-    constructor() { }
-  }
+  import {HttpClientModule} from '@angular/common/http';
+  [...]
+   imports: [
+    BrowserModule,
+    FlexLayoutModule,
+    MdListModule,
+    MdToolbarModule,
+    MdCardModule,
+    BrowserAnimationsModule,
+    HttpClientModule
+  ]
   ```
 
 - In book-template  

@@ -1,0 +1,23 @@
+{
+  "collections": [
+    {
+      "name": "books",
+      "data":  [
+        {
+          "id": 1,
+          "title": "Quatrevingt-treize",
+          "author": "Hugo"
+        },
+        {
+          "id": 2,
+          "title": "Le Colonel Chabert",
+          "author": "Balzac"
+        },
+        {
+          "id": 3,
+          "title": "Germinal",
+          "author": "Zola"
+        }]
+    }
+  ]
+}

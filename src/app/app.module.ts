@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {HttpClientModule} from '@angular/common/http';
 
 import { MdListModule } from '@angular/material';
 import { MdToolbarModule } from '@angular/material';
@@ -26,7 +27,8 @@ import { BookListComponent } from './book/book-list.component';
     MdListModule,
     MdToolbarModule,
     MdCardModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
