@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Practice 09 HTTP
 
-## Property binding
+## Call to a web API
 - In app-module 
   You need to install the HttpClientModule
    ```typescript
@@ -20,46 +20,41 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     HttpClientModule
   ]
   ```
+- In book-service
+  - Inject the http client in the constructor
+  - Call it to build an [observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html)
+  ```typescript
+  constructor(private http: HttpClient) {}
+  getAll(): Observable<Book[]> {
+    return this.http.get<Book[]>('/api/books');
+  }
+  ```
+- In book-list-components  
+Subscribe to the [observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html)
+  ```typescript
+  ngOnInit(): void {
+    this.bookService.getAll().subscribe(books => this.books = books);
+  }
+  ```
 
-- In book-template  
-  Clean the *ngFor Loop to display only one book
+## Test
+- In book-service-spec
+  - Inject the testing module and controller
+  ```typescript
+  import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+  ```
+  - Mock the http response
+  ```typescript
+  it('expects a GET request and two book', 
+    inject([BookService, HttpTestingController], 
+    (service: BookService, httpMock: HttpTestingController) => {
+       service.getAll().subscribe(books => expect(books.length).toEqual(2));
+       const req = httpMock.expectOne('/api/books');
+       expect(req.request.method).toEqual('GET');
+       req.flush([{title: 'Germinal', author:"zola"}, {title: 'Nana', author:"zola"}]);
+       httpMock.verify();
+    })
+  );
+  ```
 
-- In book-list-template  
-  Add a book component with a *ngFor to loop through books
-   ```html
-    <app-book [book]=book *ngFor="let book of books"></app-book>
-    ```
- - In book-list-component  
-  Add an attribute books and fill it with book service (cf previous practice)
-    ```typescript
-    export class BookListComponent implements OnInit {
-      books: Book[];
-
-      constructor(private bookService: BookService) { }
-  
-      ngOnInit(): void {
-        this.books = this.bookService.getAll();
-      }
-    }
-    ```
- - In app-component  
-
-## Event binding 
-
- - In book-list-component  
-   Add a method to fill a message in response to the an user click
-   ```typescript
-    message: String;
-    [...]
-    onClick(book: Book): void {
-      this.message = `You click on ${book.title} !`
-    }
-   ```
- - In book-list-template  
-    - Display the message
-    - Bind the click event to the onClick method
-    ```html
-    {{message}}
-    <app-book [book]=book *ngFor="let book of books" (click)="onClick(book)"></app-book>
-    ```
-
+## Interceptor
