@@ -10,16 +10,16 @@ describe('BookComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookComponent ],
+      declarations: [BookComponent],
       imports: [MdCardModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BookComponent);
     component = fixture.componentInstance;
-    component.book = {id: 1,title:"Germinal", author:"zola"} 
+    component.book = { id: 1, title: 'Germinal', author: 'zola' };
     fixture.detectChanges();
   });
 
@@ -27,3 +27,4 @@ describe('BookComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

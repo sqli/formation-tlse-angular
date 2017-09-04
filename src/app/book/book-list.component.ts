@@ -19,6 +19,6 @@ export class BookListComponent implements OnInit {
   }
 
   onClick(book: Book): void {
-    this.message = `You click on ${book.title} !`
+    this.message = `You click on ${book.title} !`;
   }
 }
