@@ -13,7 +13,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      imports: [ MdToolbarModule, MdCardModule]
+      imports: [MdToolbarModule, MdCardModule]
     }).compileComponents();
   }));
 
