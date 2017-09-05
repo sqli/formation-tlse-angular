@@ -1,2 +1,6 @@
 {{message}}
-<app-book [book]=book *ngFor="let book of books" (click)="onClick(book)"></app-book>
+<md-list>
+    <a *ngFor="let book of books" [routerLink]="['/book',book.id]">
+        <md-list-item>{{book.title}}</md-list-item>
+    </a>
+</md-list>

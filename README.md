@@ -2,91 +2,59 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
 
-# Practice 09 HTTP
+# Practice 10 Router Basis
 
-## Call to a web API
 - In app-module 
-  You need to install the HttpClientModule
+  - You need to import the RouterModule
    ```typescript
-  import {HttpClientModule} from '@angular/common/http';
-  [...]
+  import { RouterModule, Routes } from '@angular/router';
+  ```
+  - and inject it the routes
+   ```typescript
+   const appRoutes: Routes = [
+     { path: 'book/:id', component: BookComponent },
+     { path: '', component: BookListComponent , pathMatch: 'full'},
+   ]
+   [...]
    imports: [
-    BrowserModule,
-    FlexLayoutModule,
-    MdListModule,
-    MdToolbarModule,
-    MdCardModule,
-    BrowserAnimationsModule,
-    HttpClientModule
-  ]
+     [...]
+     RouterModule.forRoot(appRoutes)
+   ]
   ```
-- In book-service
-  - Inject the http client in the constructor
-  - Call it to build an [observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html)
-  ```typescript
-  constructor(private http: HttpClient) {}
-  getAll(): Observable<Book[]> {
-    return this.http.get<Book[]>('/api/books');
-  }
+- In app-component
+  - Add a link
+  ```html
+  <a routerLink="/"><md-icon>home</md-icon></a>
   ```
-- In book-list-components  
-Subscribe to the [observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html)
+  - Add the router-outlet 
+  ```html
+  <router-outlet></router-outlet>
+  ```
+- In book-list-component  
+  Replace the list of books with a list of links
   ```typescript
-  ngOnInit(): void {
-    this.bookService.getAll().subscribe(books => this.books = books);
+  <md-list>
+    <a *ngFor="let book of books" [routerLink]="['/book',book.id]">
+        <md-list-item>{{book.title}}</md-list-item>
+    </a>
+  </md-list>
+  ```
+- In book-components  
+  - Subscribe to the paramMap's [observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html)
+  - Call the book service to get the selected book
+  ```typescript
+  ngOnInit() {
+     this.route.paramMap
+      .switchMap((params: ParamMap) => {
+        // (+) before `params.get()` turns the string into a number
+        return this.service.get(+params.get('id'));
+      }).subscribe( book => this.book = book);
   }
   ```
 
 ## Test
 - In book-service-spec
-  - Inject the testing module and controller
+  - Inject the testing module
   ```typescript
-  import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-  ```
-  - Mock the http response
-  ```typescript
-  it('expects a GET request and two book',
-    inject([BookService, HttpTestingController],
-      (service: BookService, httpMock: HttpTestingController) => {
-        service.getAll().subscribe(books => expect(books.length).toEqual(2));
-        const req = httpMock.expectOne('/api/books');
-        expect(req.request.method).toEqual('GET');
-        req.flush([{ title: 'Germinal', author: 'zola' }, { title: 'Nana', author: 'zola' }]);
-        httpMock.verify();
-      }
-    )
-  );
-  ```
-
-## Interceptor
-- Create the Timing Interceptor
-  ```
-  ng generate s shared/TimingInterceptor  --flat
-  ```
-- In app-module  
-  Add the interceptor to the providers
-  ```typescript
-    providers: [{
-      provide: HTTP_INTERCEPTORS,
-      useClass: TimingInterceptorService,
-      multi: true,
-    }]
-  ```
-- In timing-interceptor  
-  - Make it extend HttpInterceptor
-  ```typescript
-  export class TimingInterceptorService implements HttpInterceptor {
-  ```
-  - Implement the intercept method
-  ```typescript
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const started = Date.now();
-    //'Do' adds a side effect to an Observable without affecting the values on the stream
-    return next.handle(req).do(event => {
-      if (event instanceof HttpResponse) {
-        const elapsed = Date.now() - started;
-        console.log(`Request for ${req.urlWithParams} took ${elapsed} ms.`);
-      }
-    });
-  }
+  import { RouterTestingModule } from '@angular/router/testing';
   ```

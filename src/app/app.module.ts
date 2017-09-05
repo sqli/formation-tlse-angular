@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
-import { MdListModule } from '@angular/material';
-import { MdToolbarModule } from '@angular/material';
-import { MdCardModule } from '@angular/material';
+import { MdListModule, MdToolbarModule, MdCardModule, MdIconModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -14,6 +13,11 @@ import { BookComponent } from './book/book.component';
 import { UppercaseDirective } from './shared/uppercase.directive';
 import { TimingInterceptorService } from './shared/timing-interceptor.service';
 import { BookListComponent } from './book/book-list.component';
+
+const appRoutes: Routes = [
+  { path: 'book/:id', component: BookComponent },
+  { path: '', component: BookListComponent, pathMatch: 'full' },
+];
 
 @NgModule({
   declarations: [
@@ -28,8 +32,12 @@ import { BookListComponent } from './book/book-list.component';
     MdListModule,
     MdToolbarModule,
     MdCardModule,
+    MdIconModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes
+    )
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

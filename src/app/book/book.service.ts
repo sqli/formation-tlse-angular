@@ -6,10 +6,14 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class BookService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<Book[]> {
     return this.http.get<Book[]>('/api/books');
+  }
+
+  get(id: number): Observable<Book> {
+    return this.http.get<Book>(`/api/books/${id}`);
   }
 
 }
