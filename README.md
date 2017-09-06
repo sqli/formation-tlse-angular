@@ -46,7 +46,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   <router-outlet></router-outlet>
   ```
 - in app-module  
-  Add a asynchronous route to the admin module
+  Add an asynchronous route to the admin module
   ```typescript
   const appRoutes: Routes = [
     { path: '', redirectTo: '/book', pathMatch: 'full' },
