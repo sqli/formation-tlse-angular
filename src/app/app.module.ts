@@ -12,6 +12,10 @@ import { BookModule } from './book/book.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimingInterceptorService } from './shared/timing-interceptor.service';
 
+const appRoutes: Routes = [
+  { path: '',   redirectTo: '/book', pathMatch: 'full' },
+];
+
 @NgModule({
   declarations: [
     AppComponent
@@ -23,7 +27,7 @@ import { TimingInterceptorService } from './shared/timing-interceptor.service';
     MdToolbarModule,
     MdIconModule,
     BookModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

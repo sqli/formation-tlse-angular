@@ -10,11 +10,23 @@ import { MdListModule, MdToolbarModule, MdCardModule, MdIconModule } from '@angu
 import { BookComponent } from './book.component';
 import { UppercaseDirective } from '../shared/uppercase.directive';
 import { BookListComponent } from './book-list.component';
+import { DevantureComponent } from './devanture.component';
 
 
 const bookRoutes: Routes = [
-  { path: 'book/:id', component: BookComponent },
-  { path: '', component: BookListComponent, pathMatch: 'full' },
+  {
+    path: 'book', component: DevantureComponent,
+    children: [
+      {
+        path: ':id',
+        component: BookComponent
+      },
+      {
+        path: '',
+        component: BookListComponent
+      }
+    ]
+  },
 ];
 
 
@@ -31,7 +43,8 @@ const bookRoutes: Routes = [
   declarations: [
     BookComponent,
     UppercaseDirective,
-    BookListComponent
+    BookListComponent,
+    DevantureComponent
   ]
 })
 export class BookModule { }
