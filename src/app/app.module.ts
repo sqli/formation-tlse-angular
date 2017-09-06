@@ -13,7 +13,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TimingInterceptorService } from './shared/timing-interceptor.service';
 
 const appRoutes: Routes = [
-  { path: '',   redirectTo: '/book', pathMatch: 'full' },
+  { path: '', redirectTo: '/book', pathMatch: 'full' },
+  {
+    path: 'admin',
+    loadChildren: 'app/admin/admin.module#AdminModule',
+  }
 ];
 
 @NgModule({

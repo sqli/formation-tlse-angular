@@ -2,92 +2,57 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
 
-# Practice 11 Router Child-route
+# Practice 12 Router Asynchronous routing
 
-## Modularity
-- create a book module  
+- create a admin module  
   ```
-  ng g module book
+  ng g module admin
   ```
-
-- Move all the book's stuff from the app-module to the book-module 
-  - book-module
-   ```typescript
-  const bookRoutes: Routes = [
-    { path: 'book/:id', component: BookComponent },
-    { path: '', component: BookListComponent, pathMatch: 'full' },
-  ];
-
-
-  @NgModule({
-    imports: [
-      CommonModule,
-      FlexLayoutModule,
-      MdListModule,
-      MdToolbarModule,
-      MdCardModule,
-      MdIconModule,
-      RouterModule.forChild(bookRoutes)
-    ],
-    declarations: [    
-      BookComponent,
-      UppercaseDirective,
-      BookListComponent
-    ]
-  })
+- create a root component to this module 
   ```
-  - app-module
-   ```typescript
-  @NgModule({
-    declarations: [
-      AppComponent
-    ],
-    imports: [
-      BrowserModule,
-      BrowserAnimationsModule,
-      HttpClientModule,
-      MdToolbarModule,
-      MdIconModule,
-      BookModule,
-      RouterModule.forRoot([]),
-    ],
-    providers: [{
-      provide: HTTP_INTERCEPTORS,
-      useClass: TimingInterceptorService,
-      multi: true,
-    }],
-    bootstrap: [AppComponent]
-  })
-  ``` 
-
-## Child Route
-  - create a devanture component  
+  ng g c admin/admin --flat
   ```
-  ng g book/devanture book
+- create also a book component
   ```
-  - in book-module  
-  Make devanture component the root component of the module
+  ng g c admin/book --flat
+  ```
+- create finally an author component  
+  ```
+  ng g c admin/author --flat
+  ```
+- in admin-module  
+  Add routes to these components
   ```typescript
-  const bookRoutes: Routes = [
-    {
-      path: 'book', component: DevantureComponent,
-      children: [
-        {
-          path: ':id',
-          component: BookComponent
-        },
-        {
-          path: '',
-          component: BookListComponent
-        }
-      ]
-    },
-  ] ;
-
+  const adminRoutes: Routes = [{
+    path: '', component: AdminComponent,
+    children: [
+      {
+        path: 'book',
+        component: BookComponent
+      },
+      {
+        path: 'author',
+        component: AuthorComponent
+      }
+    ]
+  }];
   ```
-  - in devanture-template  
-  Add a router-outlet and a welcome message !
+- in admin-template  
+  Add a greeting, some navigation and a router-outlet
   ```html
-  <h1 class="mat-headline">Welcome !</h1>
+  <h1 class="mat-headline">Welcome Admin !</h1>
+  <button md-button [routerLink]="['book']">New book</button>
+  <button md-button [routerLink]="['author']">New author</button>
   <router-outlet></router-outlet>
+  ```
+- in app-module  
+  Add a asynchronous route to the admin module
+  ```typescript
+  const appRoutes: Routes = [
+    { path: '', redirectTo: '/book', pathMatch: 'full' },
+    {
+      path: 'admin',
+      loadChildren: 'app/admin/admin.module#AdminModule',
+    }
+  ];
   ```
