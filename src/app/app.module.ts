@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/book', pathMatch: 'full' },
   {
     path: 'admin',
-    loadChildren: 'app/admin/admin.module#AdminModule',
+    loadChildren: 'app/book/admin/admin.module#AdminModule',
   }
 ];
 

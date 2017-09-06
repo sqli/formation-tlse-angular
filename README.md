@@ -6,19 +6,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 - create a admin module  
   ```
-  ng g module admin
+  ng g module book/admin
   ```
 - create a root component to this module 
   ```
-  ng g c admin/admin --flat
+  ng g c book/admin/admin --flat
   ```
 - create also a book component
   ```
-  ng g c admin/book --flat
+  ng g c book/admin/book --flat
   ```
 - create finally an author component  
   ```
-  ng g c admin/author --flat
+  ng g c book/admin/author --flat
   ```
 - in admin-module  
   Add routes to these components
@@ -52,7 +52,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     { path: '', redirectTo: '/book', pathMatch: 'full' },
     {
       path: 'admin',
-      loadChildren: 'app/admin/admin.module#AdminModule',
+      loadChildren: 'app/book/admin/admin.module#AdminModule',
     }
   ];
   ```
