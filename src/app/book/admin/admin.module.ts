@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { MdButtonModule } from '@angular/material';
+import { MdButtonModule, MdInputModule, MdSelectModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 import { BookComponent } from './book.component';
 import { AuthorComponent } from './author.component';
@@ -31,6 +32,9 @@ const adminRoutes: Routes = [
   imports: [
     CommonModule,
     MdButtonModule,
+    MdInputModule,
+    FormsModule,
+    MdSelectModule,
     RouterModule.forChild(adminRoutes)
   ],
   declarations: [

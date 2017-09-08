@@ -1,3 +1,16 @@
-<p class="mat-body-1">
-  Book admin works!
-</p>
+<h2 class="mat-title">New Book</h2>
+<form (ngSubmit)="onSubmit()" #bookForm="ngForm">
+  <div>
+    <md-input-container class="example-full-width">
+      <input mdInput placeholder="Title" name="title" [(ngModel)]="model.title" required>
+    </md-input-container>
+  </div>
+  <md-select placeholder="Author" [(ngModel)]="model.author" name="food">
+    <md-option *ngFor="let author of authors" [value]="author.name">
+      {{author.name}}
+    </md-option>
+  </md-select>
+
+  <button md-button type="submit"  [disabled]="!bookForm.form.valid">Submit</button>
+
+</form>
