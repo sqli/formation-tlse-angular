@@ -8,9 +8,6 @@ import { BookComponent } from './book.component';
 import { AuthorComponent } from './author.component';
 import { AdminComponent } from './admin.component';
 
-
-
-
 const adminRoutes: Routes = [
   {
     path: '', component: AdminComponent,

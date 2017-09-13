@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MdInputModule, MdSelectModule } from '@angular/material';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BookComponent } from './book.component';
+
+
 
 describe('BookComponent', () => {
   let component: BookComponent;
@@ -8,9 +14,16 @@ describe('BookComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookComponent ]
+      declarations: [BookComponent],
+      imports: [
+        FormsModule,
+        MdInputModule,
+        MdSelectModule,
+        NoopAnimationsModule,
+        HttpClientTestingModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
