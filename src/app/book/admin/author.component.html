@@ -1,3 +1,13 @@
-<p class="mat-body-1">
-  Author admin works!
-</p>
+<h2 class="mat-title">New Author</h2>
+<form [formGroup]="authorForm" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <md-input-container>
+      <input mdInput placeholder="Name" formControlName="name" required>
+    </md-input-container>
+  </div>
+
+  <button md-button type="submit"  >Submit</button>
+
+  <p>Form value: {{ authorForm.value | json }}</p>
+  <p>Form status: {{ authorForm.status | json }}</p>
+</form>

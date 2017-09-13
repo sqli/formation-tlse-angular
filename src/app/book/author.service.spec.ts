@@ -2,10 +2,13 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { AuthorService } from './author.service';
 
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
 describe('AuthorService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthorService]
+      providers: [AuthorService],
+      imports: [HttpClientTestingModule]
     });
   });
 

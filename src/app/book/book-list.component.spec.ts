@@ -4,7 +4,7 @@ import { BookListComponent } from './book-list.component';
 import { BookComponent } from './book.component';
 
 import { MdCardModule } from '@angular/material';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('BookListComponent', () => {
@@ -13,14 +13,14 @@ describe('BookListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookListComponent, BookComponent ],
+      declarations: [BookListComponent, BookComponent],
       imports: [
         MdCardModule,
         HttpClientTestingModule,
         RouterTestingModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

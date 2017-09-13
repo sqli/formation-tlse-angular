@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MdButtonModule, MdInputModule, MdSelectModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BookComponent } from './book.component';
 import { AuthorComponent } from './author.component';
 import { AdminComponent } from './admin.component';
 
-
-
+import { AuthorService } from '../author.service';
 
 const adminRoutes: Routes = [
   {
@@ -34,6 +33,7 @@ const adminRoutes: Routes = [
     MdButtonModule,
     MdInputModule,
     FormsModule,
+    ReactiveFormsModule,
     MdSelectModule,
     RouterModule.forChild(adminRoutes)
   ],
@@ -41,6 +41,7 @@ const adminRoutes: Routes = [
     BookComponent,
     AuthorComponent,
     AdminComponent
-  ]
+  ],
+  providers: [AuthorService]
 })
 export class AdminModule { }

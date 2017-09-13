@@ -14,10 +14,10 @@ import { AuthorService } from '../author.service';
 })
 export class BookComponent implements OnInit {
 
-  model:Book = new Book();
+  model: Book = new Book();
   authors: Author[];
 
-  constructor(private bookService: BookService, private authorService: AuthorService) { 
+  constructor(private bookService: BookService, private authorService: AuthorService) {
   }
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class BookComponent implements OnInit {
   }
 
   onSubmit() {
-    this.bookService.create(this.model).subscribe(data => console.log(data));
+    this.bookService.create(this.model).subscribe();
   }
 
 }

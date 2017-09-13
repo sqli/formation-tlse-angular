@@ -1,7 +1,7 @@
 <h2 class="mat-title">New Book</h2>
 <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
   <div>
-    <md-input-container class="example-full-width">
+    <md-input-container>
       <input mdInput placeholder="Title" name="title" [(ngModel)]="model.title" required>
     </md-input-container>
   </div>
@@ -12,5 +12,4 @@
   </md-select>
 
   <button md-button type="submit"  [disabled]="!bookForm.form.valid">Submit</button>
-
 </form>
