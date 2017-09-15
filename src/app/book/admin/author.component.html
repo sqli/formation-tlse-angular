@@ -6,7 +6,7 @@
     </md-input-container>
   </div>
 
-  <button md-button type="submit"  >Submit</button>
+  <button md-button type="submit"  [disabled]="!authorForm.valid">Submit</button>
 
   <p>Form value: {{ authorForm.value | json }}</p>
   <p>Form status: {{ authorForm.status | json }}</p>

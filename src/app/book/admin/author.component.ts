@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Author } from '../Author';
 import { AuthorService } from '../author.service';
 
@@ -10,9 +10,13 @@ import { AuthorService } from '../author.service';
 })
 export class AuthorComponent implements OnInit {
   authorForm = new FormGroup({
-    name: new FormControl()
+    name: new FormControl(
+      '',
+      [
+        Validators.required,
+        Validators.minLength(4)
+      ])
   });
-
 
   constructor(private authorService: AuthorService) { }
 

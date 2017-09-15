@@ -2,7 +2,7 @@
 <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
   <div>
     <md-input-container>
-      <input mdInput placeholder="Title" name="title" [(ngModel)]="model.title" required>
+      <input mdInput placeholder="Title" name="title" [(ngModel)]="model.title" required  minlength="4">
     </md-input-container>
   </div>
   <md-select placeholder="Author" [(ngModel)]="model.author" name="food">
