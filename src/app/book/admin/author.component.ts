@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Author } from '../Author';
 import { AuthorService } from '../author.service';
 
@@ -21,6 +21,10 @@ export class AuthorComponent implements OnInit {
   constructor(private authorService: AuthorService) { }
 
   ngOnInit() {
+  }
+
+  get name() {
+    return this.authorForm.get("name")
   }
 
   onSubmit() {

@@ -6,7 +6,12 @@
     </md-input-container>
   </div>
 
-  <button md-button type="submit"  [disabled]="!authorForm.valid">Submit</button>
+  <button md-button type="submit" [disabled]="!authorForm.valid">Submit</button>
+  <div *ngIf="name.errors">
+    <div *ngIf="name.errors.minlength">
+      Name must be at least 4 characters long.
+    </div>
+  </div>
 
   <p>Form value: {{ authorForm.value | json }}</p>
   <p>Form status: {{ authorForm.status | json }}</p>
