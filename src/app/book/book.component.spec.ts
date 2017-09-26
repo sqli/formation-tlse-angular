@@ -26,4 +26,18 @@ describe('BookComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+  it('should render Author in a md-card-content tag', async(() => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('md-card-content').textContent).toContain('zola');
+  }));
+
+  it('should update Author in a md-card-content tag', async(() => {
+    component.book.author = 'Hugo';
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('md-card-content').textContent).toContain('Hugo');
+  }));
 });
+
+
